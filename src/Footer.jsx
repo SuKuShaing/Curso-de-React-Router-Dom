@@ -3,6 +3,7 @@ import React from "react";
 function Footer() {
     return (
         <footer className="footer">
+            <hr />
             <h3>This is the Footer</h3>
             <p>&copy; 2023 My Application. All rights reserved.</p>
             <p>Follow us on social media!</p>

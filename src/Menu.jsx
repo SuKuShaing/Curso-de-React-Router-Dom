@@ -47,14 +47,15 @@ function Menu() {
                         to="/profile">Profile</NavLink>
                 </li> */}
 
-                {routes.map((route, index) => (
-                    <li key={index}>
+                {routes.map((route) => (
+                    <li key={route.to}>
                         <NavLink
                             style={activeStyle}
                             to={route.to}>{route.text}</NavLink>
                     </li>
                 ))}
             </ul>
+            <hr />
         </nav>
     );
 }
