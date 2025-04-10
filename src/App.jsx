@@ -4,6 +4,7 @@ import BlogPage from "./BlogPage";
 import ProfilePage from "./ProfilePage";
 import Menu from "./Menu";
 import Footer from "./Footer";
+import BlogPost from "./BlogPost";
 // import './App.css'
 
 function App() {
@@ -14,8 +15,14 @@ function App() {
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/blog" element={<BlogPage />} />
+				<Route path="/blog/:slug" element={<BlogPost />} />
 				<Route path="/profile" element={<ProfilePage />} />
-				<Route path="*" element={<p>Not Found</p>} />
+				<Route path="*" element={
+						<h3
+							style={{ color: "red", fontWeight: "bold", fontSize: "x-large" }}>Not Found
+						</h3>
+					}
+				/>
 			</Routes>
 
 			<Footer />
@@ -24,8 +31,6 @@ function App() {
 }
 
 export default App;
-
-
 
 // HashRouter es recomendable para cuando controlo solo el frontend
 // HashRouter -> URL con #
@@ -37,7 +42,6 @@ export default App;
 // /#/aaksdfjkas -> Not Found
 // /blog, /profile -> HomePage
 
-
 // BrowserRouter es recomendable para cuando controlo el backend y el frontend
 // BrowserRouter -> URL sin #
 // Ejemplo:
@@ -45,6 +49,5 @@ export default App;
 // /blog
 // /profile
 // /aaksdfjkas -> Not Found
-
 
 // Memory Router es recomendable para apps que no tienen URL
