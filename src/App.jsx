@@ -5,7 +5,7 @@ import ProfilePage from "./ProfilePage";
 import Menu from "./Menu";
 import Footer from "./Footer";
 import BlogPost from "./BlogPost";
-// import './App.css'
+import './App.css'
 
 function App() {
 	return (
@@ -14,9 +14,14 @@ function App() {
 
 			<Routes>
 				<Route path="/" element={<HomePage />} />
-				<Route path="/blog" element={<BlogPage />} />
-				<Route path="/blog/:slug" element={<BlogPost />} />
+
+				<Route path="/blog" element={<BlogPage />} >
+					{/* <Route path="/blog/:slug" element={<BlogPost />} /> */}
+					<Route path=":slug" element={<BlogPost />} />
+				</Route>
+
 				<Route path="/profile" element={<ProfilePage />} />
+				
 				<Route path="*" element={
 						<h3
 							style={{ color: "red", fontWeight: "bold", fontSize: "x-large" }}>Not Found
