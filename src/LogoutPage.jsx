@@ -1,11 +1,13 @@
 import React from "react";
+import { useAuth } from "./auth.jsx";
 
 function LogoutPage() {
+    const auth = useAuth();
 
     const logout = (e) => {
         e.preventDefault();
+        auth.logout();
         console.log("Logout");
-        // Aquí puedes agregar la lógica para cerrar sesión, como borrar el token de autenticación o redirigir al usuario a la página de inicio.
     };
 
     return (

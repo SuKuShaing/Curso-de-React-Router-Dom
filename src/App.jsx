@@ -5,36 +5,48 @@ import ProfilePage from "./ProfilePage";
 import Menu from "./Menu";
 import Footer from "./Footer";
 import BlogPost from "./BlogPost";
-import './App.css'
 import LoginPage from "./LoginPage";
 import LogoutPage from "./LogoutPage";
+import { AuthProvider } from "./auth.jsx";
+
+import "./App.css";
 
 function App() {
 	return (
 		<HashRouter>
-			<Menu />
+			<AuthProvider>
+				<Menu />
 
-			<Routes>
-				<Route path="/" element={<HomePage />} />
+				<Routes>
+					<Route path="/" element={<HomePage />} />
 
-				<Route path="/blog" element={<BlogPage />} >
-					{/* <Route path="/blog/:slug" element={<BlogPost />} /> */}
-					<Route path=":slug" element={<BlogPost />} />
-				</Route>
+					<Route path="/blog" element={<BlogPage />}>
+						{/* <Route path="/blog/:slug" element={<BlogPost />} /> */}
+						<Route path=":slug" element={<BlogPost />} />
+					</Route>
 
-				<Route path="/login" element={<LoginPage />} />
-				<Route path="/logout" element={<LogoutPage />} />
-				<Route path="/profile" element={<ProfilePage />} />
-				
-				<Route path="*" element={
-						<h3
-							style={{ color: "red", fontWeight: "bold", fontSize: "x-large" }}>Not Found
-						</h3>
-					}
-				/>
-			</Routes>
+					<Route path="/login" element={<LoginPage />} />
+					<Route path="/logout" element={<LogoutPage />} />
+					<Route path="/profile" element={<ProfilePage />} />
 
-			<Footer />
+					<Route
+						path="*"
+						element={
+							<h3
+								style={{
+									color: "red",
+									fontWeight: "bold",
+									fontSize: "x-large",
+								}}
+							>
+								Not Found
+							</h3>
+						}
+					/>
+				</Routes>
+
+				<Footer />
+			</AuthProvider>
 		</HashRouter>
 	);
 }

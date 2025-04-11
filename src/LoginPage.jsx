@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useAuth } from "./auth.jsx";
 
 function LoginPage() {
+    const auth = useAuth();
 	const [username, setUsername] = useState("");
 
     const login = (e) => {
         e.preventDefault();
+        auth.login({ username });
         console.log("Login", username);
     };
 
