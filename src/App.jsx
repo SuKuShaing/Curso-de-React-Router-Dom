@@ -6,6 +6,8 @@ import Menu from "./Menu";
 import Footer from "./Footer";
 import BlogPost from "./BlogPost";
 import './App.css'
+import LoginPage from "./LoginPage";
+import LogoutPage from "./LogoutPage";
 
 function App() {
 	return (
@@ -20,6 +22,8 @@ function App() {
 					<Route path=":slug" element={<BlogPost />} />
 				</Route>
 
+				<Route path="/login" element={<LoginPage />} />
+				<Route path="/logout" element={<LogoutPage />} />
 				<Route path="/profile" element={<ProfilePage />} />
 				
 				<Route path="*" element={

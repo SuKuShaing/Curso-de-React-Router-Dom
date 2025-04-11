@@ -11,6 +11,8 @@ function Menu() {
     routes.push({ to: "/", text: "Home" });
     routes.push({ to: "/blog", text: "Blog" });
     routes.push({ to: "/profile", text: "Profile" });
+    routes.push({ to: "/login", text: "Login" });
+    routes.push({ to: "/logout", text: "Logout" });
 
     return (
         <nav className="menu">
