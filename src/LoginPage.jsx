@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "./auth.jsx";
+import { Navigate } from "react-router-dom";
 
 function LoginPage() {
     const auth = useAuth();
@@ -10,6 +11,11 @@ function LoginPage() {
         auth.login({ username });
         console.log("Login", username);
     };
+
+	// Si el usuario ya está logueado, redirigir a la página de perfil sí intenta acceder a la página de login
+	if (auth.user) {
+		return <Navigate to="/profile" />;
+	}
 
 	return (
 		<>

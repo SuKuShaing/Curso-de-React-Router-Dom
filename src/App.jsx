@@ -7,7 +7,7 @@ import Footer from "./Footer";
 import BlogPost from "./BlogPost";
 import LoginPage from "./LoginPage";
 import LogoutPage from "./LogoutPage";
-import { AuthProvider } from "./auth.jsx";
+import { AuthProvider, AuthRoute } from "./auth.jsx";
 
 import "./App.css";
 
@@ -25,9 +25,24 @@ function App() {
 						<Route path=":slug" element={<BlogPost />} />
 					</Route>
 
+					{/* Se puede hacer un OnlyNoAuthRoute y envover el login Page y las rutas que son onlyPublic, pero aquí se optó por hacerlo en el componente mismo de LoginPage */}
 					<Route path="/login" element={<LoginPage />} />
-					<Route path="/logout" element={<LogoutPage />} />
-					<Route path="/profile" element={<ProfilePage />} />
+					<Route
+						path="/logout"
+						element={
+							<AuthRoute>
+								<LogoutPage />
+							</AuthRoute>
+						}
+					/>
+					<Route
+						path="/profile"
+						element={
+							<AuthRoute>
+								<ProfilePage />
+							</AuthRoute>
+						}
+					/>
 
 					<Route
 						path="*"
