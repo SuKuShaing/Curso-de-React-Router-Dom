@@ -1,12 +1,21 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import blogdata from "./blogdata";
+import { useAuth } from "./auth";
 
 
 function BlogPage() {
+
+    const auth = useAuth();
+
+    const canCreate = auth.user?.rolIs === "admin" || auth.user?.rolIs === "author";
+
     return (
         <div className="blog-page">
             <h1>Welcome to the Blog Page</h1>
+            {canCreate && (
+                <Link to="/blog/create-post">Create Post</Link>
+            )}
             <Outlet />
             <ul>
             {

@@ -8,10 +8,10 @@ function BlogPost() {
     const { slug } = useParams();
 
     const auth = useAuth();
-
+    
     const blogpost = blogdata.find((post) => post.slug === slug);
 
-    const canDelete = auth.user?.isAdmin || blogpost.author === auth.user?.username;
+    const canDelete = auth.user?.rolIs === "admin" || auth.user?.rolIs === "editor" || auth.user?.username === blogpost.author; 
 
     const returnToBlog = () => {
         // navigate("/blog");

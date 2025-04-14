@@ -10,6 +10,7 @@ import LogoutPage from "./LogoutPage";
 import { AuthProvider, AuthRoute } from "./auth.jsx";
 
 import "./App.css";
+import CreatePost from "./CreatePost.jsx";
 
 function App() {
 	return (
@@ -24,8 +25,12 @@ function App() {
 						{/* <Route path="/blog/:slug" element={<BlogPost />} /> */}
 						<Route path=":slug" element={<BlogPost />} />
 					</Route>
+					<Route path="/blog/create-post" element={
+						<CreatePost />
+					} 
+					/>
 
-					{/* Se puede hacer un OnlyNoAuthRoute y envover el login Page y las rutas que son onlyPublic, pero aquí se optó por hacerlo en el componente mismo de LoginPage */}
+					{/* Se puede hacer un OnlyNoAuthRoute y envolver el login Page y las rutas que son onlyPublic, pero aquí se optó por hacerlo en el componente mismo de LoginPage */}
 					<Route path="/login" element={<LoginPage />} />
 					<Route
 						path="/logout"

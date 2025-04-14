@@ -1,7 +1,12 @@
 import { createContext, useContext, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-const adminList = ["Sebastian", "otros"];
+const usersList = [
+	{ username: "Sebastian", rol: "admin" }, // Puede crear, editar y borrar posts de cualquier autor
+	{ username: "Diego", rol: "author" }, // Puede crear y editar sus propios posts, no puede borrarlos
+	{ username: "Maca", rol: "editor" }, // Puede editar y borrar posts de otros autores, no puede crear posts
+	{ username: "Pepe", rol: "user" }, // Puede leer posts, no puede crear, editar o borrar posts
+];
 
 const AuthContext = createContext();
 
@@ -10,8 +15,13 @@ function AuthProvider({ children }) {
 	const [user, setUser] = useState(null);
 
 	const login = ({ username }) => {
-		const isAdmin = adminList.includes(username);
-		setUser({ username, isAdmin });
+		const rolIs = usersList.find((user) => user.username === username)?.rol;
+		
+		console.log(usersList.find((user) => user.username === username));
+		console.log(rolIs);
+		console.log('rolIs es: ', typeof(rolIs));
+
+		setUser({ username, rolIs });
 		navigate("/profile");
 	};
 
