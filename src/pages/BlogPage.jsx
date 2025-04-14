@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import blogdata from "./blogdata";
-import { useAuth } from "./auth";
+import blogdata from "../data/blogdata";
+import { useAuth } from "../auth/auth";
 
 
 function BlogPage() {

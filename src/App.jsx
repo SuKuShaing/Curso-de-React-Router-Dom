@@ -1,16 +1,16 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./HomePage";
-import BlogPage from "./BlogPage";
-import ProfilePage from "./ProfilePage";
-import Menu from "./Menu";
-import Footer from "./Footer";
-import BlogPost from "./BlogPost";
-import LoginPage from "./LoginPage";
-import LogoutPage from "./LogoutPage";
-import { AuthProvider, AuthRoute } from "./auth.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import BlogPage from "./pages/BlogPage.jsx";
+import ProfilePage from "./pages/ProfilePage";
+import Menu from "./components/Menu.jsx";
+import Footer from "./components/Footer.jsx";
+import BlogPost from "./pages/BlogPost.jsx";
+import LoginPage from "./pages/LoginPage";
+import LogoutPage from "./pages/LogoutPage.jsx";
+import { AuthProvider, AuthRoute } from "./auth/auth.jsx";
 
 import "./App.css";
-import CreatePost from "./CreatePost.jsx";
+import CreatePost from "./pages/CreatePost.jsx";
 
 function App() {
 	return (

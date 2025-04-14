@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "./auth.jsx";
+import { useAuth } from "../auth/auth";
 import { Navigate } from "react-router-dom";
 
 function LoginPage() {

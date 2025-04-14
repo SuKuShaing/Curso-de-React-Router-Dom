@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth, AuthRoute } from "./auth";
+import { useAuth, AuthRoute } from "../auth/auth";
 
 function ProfilePage() {
 	const auth = useAuth();
