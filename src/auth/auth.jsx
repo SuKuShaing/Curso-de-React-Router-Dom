@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const usersList = [
 	{ username: "Sebastian", rol: "admin" }, // Puede crear, editar y borrar posts de cualquier autor
@@ -14,15 +14,15 @@ function AuthProvider({ children }) {
 	const navigate = useNavigate();
 	const [user, setUser] = useState(null);
 
-	const login = ({ username }) => {
+	const login = ({ username, from }) => {
 		const rolIs = usersList.find((user) => user.username === username)?.rol;
-		
-		console.log(usersList.find((user) => user.username === username));
-		console.log(rolIs);
-		console.log('rolIs es: ', typeof(rolIs));
 
 		setUser({ username, rolIs });
-		navigate("/profile");
+
+		// Redirige a la página de origen o a "/profile" por defecto
+		navigate(from || "/profile", { replace: true });
+		// navigate("/profile");
+
 	};
 
 	const logout = () => {
@@ -44,8 +44,13 @@ function useAuth() {
 function AuthRoute(props) {
     const auth = useAuth();
 
+	const location = useLocation(); // captura la página de origen a la que iba el usuario antes de loguearse
+
+	// guardamos la página de origen a la que iba el usuario en state y lo redirigimos a la página de login
+	// loginPage con useLocation obtienen la página de origen con location.state?.from?.pathname
+	// se loguea el usuario y se redirige a la página de destino original	
 	if (!auth.user) {
-		return <Navigate to="/login" />;
+		return <Navigate to="/login" state={{ from: location }} replace />;
 	}
 
     return props.children;
